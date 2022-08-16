@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var EtPassword: TextInputLayout
     private lateinit var btnLogin: Button
     private lateinit var btnLoginGoogle: Button
-
+//
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
