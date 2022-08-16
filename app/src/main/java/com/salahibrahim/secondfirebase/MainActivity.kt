@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //
+
         supportActionBar!!.title="login"
 
         EtEmail = findViewById(R.id.Emaild)
