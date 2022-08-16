@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.apptow.instore
 
 import org.junit.Test
 
