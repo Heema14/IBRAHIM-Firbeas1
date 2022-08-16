@@ -45,7 +45,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="CANCEL"
-            android:textColor="@color/red"
+            android:textColor="@color/white"
             android:textSize="21sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
