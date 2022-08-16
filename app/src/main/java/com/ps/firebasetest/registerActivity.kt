@@ -40,7 +40,7 @@ class registerActivity : AppCompatActivity() {
         confirmDia = view.findViewById(R.id.AddTxtDia)
         CancelDia = view.findViewById(R.id.CancelTxtDia)
         datePicker = view.findViewById(R.id.date_Picker)
-
+//
             showDateDialog()
 
 
