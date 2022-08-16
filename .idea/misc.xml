@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hp/AndroidStudioProjects/ScenodFirbeas2/app/src/main/res/layout/activity_main.xml" value="0.1675213675213675" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/ScenodFirbeas2/app/src/main/res/layout/activity_next.xml" value="0.15598290598290598" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/Secondfirebase/app/src/main/res/drawable/bu.xml" value="0.1455" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/Secondfirebase/app/src/main/res/drawable/screeen.xml" value="0.1345" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/Secondfirebase/app/src/main/res/layout/activity_main.xml" value="0.21" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/Secondfirebase/app/src/main/res/layout/activity_next.xml" value="0.1675213675213675" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_main.xml" value="0.1675213675213675" />
       </map>
     </option>
   </component>
