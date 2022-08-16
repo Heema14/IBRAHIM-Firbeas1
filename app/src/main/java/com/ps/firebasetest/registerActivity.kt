@@ -33,6 +33,7 @@ class registerActivity : AppCompatActivity() {
 
         addDateBtn = findViewById(R.id.Add_BD_btn)
         tvDate = findViewById(R.id.tvDate)
+        //
 
         //يجب وضع متغير view لكل العناصر خارج الاكتيفيتي
 
