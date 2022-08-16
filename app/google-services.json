@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "812023901322",
+    "project_id": "second-firebase-c9324",
+    "storage_bucket": "second-firebase-c9324.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812023901322:android:af529061c1fa018ebbd173",
+        "android_client_info": {
+          "package_name": "com.salahibrahim.secondfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812023901322-6ijvcq2e422ocgm5jdadn5a1pga82m8j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqUSx9QaBxWNQLu-b_DTsQ0DStlEvOSlM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812023901322-6ijvcq2e422ocgm5jdadn5a1pga82m8j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

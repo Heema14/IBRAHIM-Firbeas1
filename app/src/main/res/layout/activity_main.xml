@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="2pt"
+    android:paddingRight="2pt"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="login"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="30pt"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Emaild"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        android:layout_marginTop="60pt">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:drawablePadding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20pt"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:drawablePadding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/Btn_Login"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Login"
+        android:background="@drawable/bu"
+        android:layout_gravity="center"
+        android:layout_marginTop="40pt"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:id="@+id/Btn_logGoogle"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="sign in with Google"
+        android:textAllCaps="false"
+        android:background="@drawable/bu"
+        android:layout_gravity="center"
+        android:layout_marginTop="20pt"/>
+
+    <TextView
+        android:id="@+id/DontAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't Have an Account, Register"
+        android:textColor="#252323"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30pt"/>
+
+</LinearLayout>
