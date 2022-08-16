@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.socialMedia.firebasetest.R
 
 class MainActivity : AppCompatActivity() {
 
