@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
-import com.socialMedia.firebasetest.R
+import com.DealDirect.App.R
 import java.util.*
 
 class registerActivity : AppCompatActivity() {
