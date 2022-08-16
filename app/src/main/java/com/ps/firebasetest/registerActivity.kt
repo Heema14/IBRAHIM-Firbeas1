@@ -69,7 +69,7 @@ class registerActivity : AppCompatActivity() {
         CancelDia.setOnClickListener {
             dialog.dismiss()
         }
-//gg
+
     }
 
     fun saveDate(): String {
