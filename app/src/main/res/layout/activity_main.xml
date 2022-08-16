@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
+            android:textColor="#2C2929"
             android:inputType="textEmailAddress"
             android:drawablePadding="10dp"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -49,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
+            android:textColor="#2C2929"
             android:inputType="textPassword"
             android:drawablePadding="10dp"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -79,7 +81,7 @@
         android:layout_height="wrap_content"
         android:text="Don't Have an Account, Register"
         android:textColor="#252323"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:layout_gravity="center"
         android:layout_marginTop="30pt"/>
 

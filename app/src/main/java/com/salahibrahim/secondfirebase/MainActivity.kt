@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 ).show()
 
                 else -> {
-                    val progreessDialog = ProgressDialog(this)
+                    val progreessDialog = ProgressDialog(this@MainActivity)
                     progreessDialog.setTitle("Login")
                     progreessDialog.setMessage("Please whit, this may take a while...")
                     progreessDialog.setCanceledOnTouchOutside(false)
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 progreessDialog.dismiss()
-                                val intent = Intent(this, NextActivity::class.java)
+                                val intent = Intent(this@MainActivity, NextActivity::class.java)
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                                 startActivity(intent)
                                 finish()
