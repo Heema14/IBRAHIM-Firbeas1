@@ -1,179 +1,169 @@
-<resources>
-    <string name="app_name">Flash Delivery</string>
-
-    <string name="app_version_number">1.0.0</string>
-    <string name="food_categories">Food Categories</string>
-    <string name="fruits">Fruits</string>
-    <string name="cake">Cake</string>
-    <string name="pizza">Pizza</string>
-    <string name="soup">Soup</string>
-    <string name="snacks">Snacks</string>
-    <string name="cookies">Cookies</string>
-    <string name="menu_icon">Menu Icon</string>
-    <string name="cold_drink">Cold drinks</string>
-    <string name="here_s_what_i_found_for_you">Here\'s what I found for you</string>
-    <string name="show_all">Show all</string>
-    <string name="noodles">Noodles</string>
-    <string name="short_item_description">Short Item Description</string>
-    <string name="item_name">Item Name</string>
-    <string name="default_price">$0.00</string>
-    <string name="default_quantity">0</string>
-    <string name="place_order">Place Order</string>
-    <string name="your_order_default_items">Your Order (0 items)</string>
-    <string name="your_order">Your Order</string>
-    <string name="order_details">Order details</string>
-    <string name="total_price">Total Price</string>
-    <string name="tax">Tax</string>
-    <string name="sub_total">Sub-total</string>
-    <string name="time_for_take_away_of_order">Time for take-away of order</string>
-    <string name="change_time">Change Time</string>
-    <string name="proceed_to_pay">Proceed to Pay</string>
-    <string name="create_account">Create Account</string>
-    <string name="enjoy_your_order">Enjoy Your Order</string>
-    <string name="full_name">Full Name</string>
-    <string name="e_mail">E-mail</string>
-    <string name="company_organization">Company / Organization</string>
-    <string name="mobile_number">Mobile Number</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="create_password">Create Password</string>
-    <string name="employee_id">Employee ID</string>
-    <string name="employee_id_card">Employee ID Card</string>
-    <string name="upload">Upload</string>
-    <string name="i_agree_to_the_terms_conditions"><![CDATA[I agree to the Terms & Conditions]]></string>
-    <string name="preview">Preview</string>
-    <string name="register">Register</string>
-    <string name="preview_details">Preview Details</string>
-    <string name="gender">Gender</string>
-    <string name="select_your_gender">Select your Gender</string>
-    <string name="save">Save</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
-    <string name="hi">Hi</string>
-    <string name="name">Name</string>
-    <string name="your_id_card">Your ID Card</string>
-    <string name="field_empty">Field can\'t be empty</string>
-    <string name="invalid_email">Invalid Email</string>
-    <string name="invalid_mobile_no">Invalid Mobile Number</string>
-    <string name="already_have_a_account">Already have a Account?</string>
-    <string name="login">Login</string>
-    <string name="open">open</string>
-    <string name="close">close</string>
-    <string name="payment_method">Payment Method</string>
-    <string name="cash_payment">Cash Payment</string>
-    <string name="saved_cards">Saved Cards</string>
-    <string name="credit_or_debit_card">Credit or Debit Card</string>
-    <string name="bhim_upi">BHIM UPI</string>
-    <string name="net_banking">Net Banking</string>
-    <string name="confirm_payment">Confirm Payment</string>
-    <string name="wallets">Wallets</string>
-    <string name="pay_securely">Pay Securely</string>
-    <string name="card_number">Card Number</string>
-    <string name="card_holder_name">Card Holder Name</string>
-    <string name="expiry_validity_date">Expiry / Validity Date</string>
-    <string name="cvv">CVV</string>
-    <string name="order_successful">Order Successful</string>
-    <string name="payment">Payment</string>
-    <string name="date">DATE</string>
-    <string name="total_amount">Total Amount</string>
-    <string name="done">Done</string>
-    <string name="dollar">$</string>
-    <string name="order_take_away_time">Order Take-away Time</string>
-    <string name="cancel_order">Cancel Order</string>
-    <string name="processing">Processing</string>
-    <string name="enter_your_upi_id">Enter your UPI ID</string>
-    <string name="username_bank">username@bank</string>
-    <string name="default_order_id">Order ID: CA124432</string>
-    <string name="default_date_and_time">Jan 01, 2021 at 11:14 AM</string>
-    <string name="welcome_back">Welcome Back</string>
-    <string name="don_t_have_a_account">Don\'t have a account?</string>
-    <string name="password">Password</string>
-    <string name="forgot_password">Forgot Password</string>
-    <string name="next">Next</string>
-    <string name="full_details">Full Details</string>
-    <string name="cafy_reg_id">Cafy Reg ID</string>
-    <string name="reg_date">Reg Date</string>
-    <string name="choose_image">Choose Image</string>
-    <string name="description">Description</string>
-    <string name="orders_history">Orders History</string>
-    <string name="my_favourites">My Favourites</string>
-    <string name="ok">OK</string>
-    <string name="my_orders">My Orders</string>
-    <string name="need_help_contact_us">Need Help? Contact Us</string>
-    <string name="seems_like_you_have_not_ordered_anything">Seems like you have not ordered anything !</string>
-    <string name="nothing_in_your_order_history">Nothing in your Order History</string>
-    <string name="pay">Pay</string>
-    <string name="save_this_card_for_future_payments">Save this card for future payments</string>
-    <string name="mm_yy">MM/YY</string>
-    <string name="saved_details">Saved Details</string>
-    <string name="food_menu">Food Menu</string>
-    <string name="account">Account</string>
-    <string name="profile">Profile</string>
-    <string name="update_menu">Update Menu</string>
-    <string name="settings">Settings</string>
-    <string name="log_out">Log Out</string>
-    <string name="remove_all_the_previous_orders_details">Remove all the previous orders details</string>
-    <string name="delete_orders_history">Delete Orders History</string>
-    <string name="developer">Developer</string>
-    <string name="app_version">App Version</string>
-    <string name="about">About</string>
-    <string name="developer_name">Roshan Kumar</string>
-    <string name="remove_all_the_saved_cards">Remove all the saved cards</string>
-    <string name="delete_saved_cards">Delete Saved Cards</string>
-    <string name="delete_all_the_menu_items_from_offline_data">Delete all the menu items from offline data</string>
-    <string name="delete_menu">Delete Menu</string>
-    <string name="update_the_latest_food_menu_for_offline">Update the latest food menu for offline</string>
-    <string name="offline">Offline</string>
-    <string name="on">On</string>
-    <string name="menu_mode">Menu Mode</string>
-    <string name="load_item_images">Load Item Images</string>
-    <string name="data_saving">Data Saving</string>
-    <string name="support">Support</string>
-    <string name="share_app">Share App</string>
-    <string name="report_bug">Report Bug</string>
-    <string name="contact_us">Contact Us</string>
-    <string name="message">Message</string>
-    <string name="have_a_problem">HAVE A PROBLEM !</string>
-    <string name="call">Call</string>
-    <string name="mail">Mail</string>
-    <string name="thali">Thali</string>
-    <string name="xxx">XXX</string>
-    <string name="default_card_number">2334 xxxx xxxx 6335</string>
-    <string name="default_date">09/23</string>
-    <string name="hello">Hello!</string>
-    <string name="show_this_qr_code_to_your_office_canteen">Show this QR Code to your Office Canteen</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Orders</string>
-    <string name="title_dashboard">Maps</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="Dashboard">Dashboard</string>
-    <string name="PendingActions">Pending Actions</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="our_rezference">our rezference :</string>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="15dp"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
 
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="58dp"
+        android:text="Register"
+        android:textSize="28sp"
+        android:gravity="center"
+        android:textStyle="bold"/>
 
-    <string name="title_activity_maps">Map</string>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_input_layout_fullname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:errorEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    <string name="normal_map">Normal Map</string>
-    <string name="hybrid_map">Hybrid Map</string>
-    <string name="terrain_map">Terrain Map</string>
-    <string name="satellite_map">Satellite Map</string>
+        <com.google.android.material.textfield.TextInputEditText
 
-    <string name="lat_lng_snippet">Lat: %1$.5f, Lng: %2$.5f</string>
-    <string name="dropped_pin">Dropped Pin</string>
-    <string name="poi">poi</string>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:inputType="text"
+            android:drawableStart="@drawable/ic_outline_perm_identity_24"
+            android:drawablePadding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <string name="search">Search</string>
-    <string name="delete">Delete</string>
-    <string name="placeholder">placeholder</string>
-    <string name="setting">Setting</string>
-    <string name="content_description_fab">description fab</string>
-    <string name="content_description_search">description Search</string>
-    <string name="content_description_delete">description delete</string>
-    <string name="content_description_profile">description profile</string>
-    <string name="content_description_setting">description setting</string>
-    <string name="title_activity_tracking">TrackingActivity</string>
 
-</resources>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_input_layout_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:errorEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:inputType="text"
+            android:drawableStart="@drawable/ic_outline_perm_identity_24"
+            android:drawablePadding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_input_layout_Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:errorEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:drawableStart="@drawable/ic_outline_email_24"
+            android:drawablePadding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_input_layout_Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/ic_outline_lock_24"
+            android:drawablePadding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_input_layout_rePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Re-Password"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/ic_outline_lock_24"
+            android:drawablePadding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/register_Btn_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/blue"
+        android:gravity="center"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Already Have an Account,"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:textSize="16sp"
+            android:gravity="end"/>
+
+        <TextView
+            android:id="@+id/register_tv_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text=" Login"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:textSize="16sp"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
