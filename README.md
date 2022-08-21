@@ -1,13 +1,42 @@
-class RegisterActivity : AppCompatActivity() {
-    private lateinit var fullNameTil: TextInputLayout
-    private lateinit var userNameTil: TextInputLayout
-    private lateinit var emailTil: TextInputLayout
-    private lateinit var passwordTil: TextInputLayout
-    private lateinit var rePasswordTil: TextInputLayout
-    private lateinit var signUp_Btn: Button
-    private lateinit var registerProgressDialog: ProgressDialog
+package com.app.flashdelivery.ui.Registration
+
+import android.app.ProgressDialog
+import android.content.DialogInterface
+import android.content.Intent
+import android.os.Bundle
+import android.os.Handler
+import android.util.Patterns
+import android.view.View
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import com.app.flashdelivery.ui.Oeders.PreviewDetailsActivity
+import com.app.flashdelivery.R
+import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import java.util.*
+
+class RegisterUserActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var databaseRef: DatabaseReference
+
+    private lateinit var fullNameTIL: TextInputLayout
+    private lateinit var emailTIL: TextInputLayout
+    private lateinit var mobileNumberTIL: TextInputLayout
+    private lateinit var createPasswordTIL: TextInputLayout
+    private lateinit var confirmPasswordTIL: TextInputLayout
+
+    private lateinit var agreeCheckBox: CheckBox
+    private lateinit var registerBtn: Button
+
+    private lateinit var registerProgressDialog: ProgressDialog
+
     private var doubleBackToExit = false
     override fun onBackPressed() {
         if (doubleBackToExit) {
@@ -15,178 +44,169 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
         doubleBackToExit = true
-        Toast.makeText(this, "Press Again To Exit", Toast.LENGTH_SHORT).show()
-        Handler().postDelayed({
-            doubleBackToExit = false
-
-        }, 2000)
+        Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show()
+        Handler().postDelayed({ doubleBackToExit = false }, 2000)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-
-        fullNameTil = findViewById(R.id.register_input_layout_username)
-        userNameTil = findViewById(R.id.register_input_layout_fullname)
-        emailTil = findViewById(R.id.register_input_layout_Email)
-        passwordTil = findViewById(R.id.register_input_layout_Password)
-        rePasswordTil = findViewById(R.id.register_input_layout_rePassword)
-        signUp_Btn = findViewById(R.id.register_Btn_signup)
+        setContentView(R.layout.activity_register_user)
         auth = FirebaseAuth.getInstance()
-        // ملاحظة 44
         databaseRef = FirebaseDatabase.getInstance().reference.child("users")
-        registerProgressDialog = ProgressDialog(this@RegisterActivity)
-        signUp_Btn.setOnClickListener {
-                registerNewUser()
 
+        fullNameTIL = findViewById(R.id.full_name)
+        emailTIL = findViewById(R.id.register_email_til)
+        mobileNumberTIL = findViewById(R.id.register_mobile_num_til)
+        createPasswordTIL = findViewById(R.id.register_password_til)
+        confirmPasswordTIL = findViewById(R.id.register_re_password_til)
+
+        agreeCheckBox = findViewById(R.id.register_check_box)
+        registerBtn = findViewById(R.id.btn_register)
+
+        agreeCheckBox.setOnClickListener {
+            registerBtn.isEnabled = agreeCheckBox.isChecked
         }
 
+        registerProgressDialog = ProgressDialog(this)
+        registerBtn.setOnClickListener { registerUsers() }
     }
-    private fun validateFullName(): Boolean {
-        val fullName = fullNameTil.editText!!.text.toString().trim()
-        if (fullName.isEmpty()){
-            fullNameTil.error = "Field Can't be Empty"
+
+
+    private fun validateName(): Boolean {
+        val fullName = fullNameTIL.editText!!.text.toString().trim()
+        if (fullName.isEmpty()) {
+            fullNameTIL.error = getString(R.string.field_empty)
             return false
         }
-        //ملاحظة 59
-        fullNameTil.error = null
+        fullNameTIL.error = null
         return true
-
     }
-    private fun validateUserName(): Boolean {
-        val userName = userNameTil.editText!!.text.toString().trim()
-        if (userName.isEmpty()){
-            userNameTil.error = "Field Can't be Empty"
-            return false
-        }
-        userNameTil.error = null
-        return true
-        }
+
     private fun validateEmail(): Boolean {
-        val email = emailTil.editText!!.text.toString().trim()
-        if (email.isEmpty()){
-            emailTil.error = "Field Can't be Empty"
-            return false
-
-        }
-        // ملاحظة 79
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            emailTil.error = "Invalid Email"
+        val email = emailTIL.editText!!.text.toString().trim()
+        if (email.isEmpty()) {
+            emailTIL.error = getString(R.string.field_empty)
             return false
         }
-
-        emailTil.error = null
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailTIL.error = getString(R.string.invalid_email)
+            return false
+        }
+        emailTIL.error = null
         return true
     }
+
+
+    private fun validateMobileNum(): Boolean {
+        val mobileNum = mobileNumberTIL.editText!!.text.toString().trim()
+        if (mobileNum.isEmpty()) {
+            mobileNumberTIL.error = getString(R.string.field_empty)
+            return false
+        }
+        if (mobileNum.length < 10) {
+            mobileNumberTIL.error = getString(R.string.invalid_mobile_no)
+            return false
+        }
+        mobileNumberTIL.error = null
+        return true
+    }
+
     private fun validatePassword(): Boolean {
-        val password = passwordTil.editText!!.text.toString().trim()
-        val confirmPassword = rePasswordTil.editText!!.text.toString().trim()
+        createPasswordTIL.error = null
+        confirmPasswordTIL.error = null
 
-        if (password.isEmpty()){
-            passwordTil.error = "Field Can't be Empty"
+        val createPass = createPasswordTIL.editText!!.text.toString().trim()
+        val confirmPass = confirmPasswordTIL.editText!!.text.toString().trim()
+
+        if (createPass.isEmpty()) {
+            createPasswordTIL.error = getString(R.string.field_empty)
+        }
+        if (confirmPass.isEmpty()) {
+            confirmPasswordTIL.error = getString(R.string.field_empty)
+        }
+        if (createPass.isEmpty() || confirmPass.isEmpty()) return false
+
+        if (createPass.length < 6) {
+            createPasswordTIL.error = "Password is too short (Min. 6 Characters)"
             return false
         }
-
-        if (confirmPassword.isEmpty()){
-            rePasswordTil.error = "Field Can't be Empty"
+        if (createPass != confirmPass) {
+            confirmPasswordTIL.error = "Password don't match"
             return false
         }
-
-        if (confirmPassword.isEmpty() || password.isEmpty()) return false
-        if (password.length<6){
-            passwordTil.error = "Password is Too Short (Min. 6 Characters)"
-            return false
-        }
-        if (password!= confirmPassword){
-            rePasswordTil.error = "Password Doesn't Match"
-            return false
-        }
-
-        // ملاحظة 111 & 112
-        passwordTil.error = null
-        rePasswordTil.error = null
+        createPasswordTIL.error = null
+        confirmPasswordTIL.error = null
         return true
     }
 
-    private fun registerNewUser() {
-        if (!validateFullName() or !validateUserName() or !validateEmail() or !validatePassword())
-        return
-        var email = emailTil.editText!!.text.toString()
-        var password = passwordTil.editText!!.text.toString()
-        var fullName = fullNameTil.editText!!.text.toString()
+    private fun registerUsers() {
+        if (!validateName() or !validateEmail() or !validateMobileNum() or !validatePassword())
+            return
+
+
+        val email = emailTIL.editText!!.text.toString()
+        val password = confirmPasswordTIL.editText!!.text.toString()
+        val name = fullNameTIL.editText!!.text.toString()
+
         registerProgressDialog.setTitle("Registering...")
-        registerProgressDialog.setMessage("We Are Creating Your Account")
+        registerProgressDialog.setMessage("We are creating your account")
         registerProgressDialog.show()
 
-        auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task ->
-            if (task.isSuccessful){
-                val currentUser = auth.currentUser
-                val profileUpdate = userProfileChangeRequest { displayName = fullName }
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val currentUser = auth.currentUser
+                    val profileUpdates = userProfileChangeRequest { displayName = name }
 
-                currentUser!!.updateProfile(profileUpdate).addOnCompleteListener {
-                    if (it.isSuccessful){
-                     addUserDetailsToDatabase(currentUser)
-
-                    }
+                    currentUser!!.updateProfile(profileUpdates)
+                        .addOnCompleteListener { it ->
+                            if (it.isSuccessful) {
+                                //Name Updated
+                                addUserDetailsToDatabase(currentUser)
+                            }
+                        }
+                } else {
+                    showDialog("Registration Failed", task.exception.toString())
                 }
-            }else {
-                showMyDialog("Registration Field", task.exception.toString())
-
             }
-
-        }
-
     }
 
-    private fun addUserDetailsToDatabase(currentUser: FirebaseUser) {
-        registerProgressDialog.setMessage("Uploading Details to Database")
-        var userName = userNameTil.editText!!.text.toString()
-        val user = databaseRef.child(currentUser.uid)
-        user.child("username").setValue(userName)
-        user.child("gender").setValue("none")
-        user.child("reg_date").setValue(getRegDate())
-        user.child("full_name").setValue(fullNameTil.editText!!.text.toString().trim())
-        user.child("email").setValue(emailTil.editText!!.text.toString().trim())
-        sendEmailVerification(currentUser)
+
+    private fun addUserDetailsToDatabase(
+        user: FirebaseUser
+    ) {
+        registerProgressDialog.setMessage("Uploading details to database")
+
+        val mobileNo = mobileNumberTIL.editText!!.text.toString()
+
+        val usera = databaseRef.child(user.uid)
+        usera.child("mobile_no").setValue(mobileNo)
+        usera.child("gender").setValue("none")
+        usera.child("reg_date").setValue(getRegDate())
+        usera.child("full_name").setValue(fullNameTIL.editText!!.text.toString().trim())
+        usera.child("email").setValue(emailTIL.editText!!.text.toString().trim())
+        sendEmailVerification(user)
     }
 
     private fun sendEmailVerification(user: FirebaseUser) {
-        user.sendEmailVerification().addOnCompleteListener {
-            if (it.isSuccessful){
-                AlertDialog.Builder(this).setTitle("Verify Email Address")
-                    .setMessage("Register Successfully ! \n a Verification Link Has been sent to your Email Address")
-                    .setPositiveButton("OK", DialogInterface.OnClickListener {  _ , _ ->
-                        startActivity(Intent(this, LoginActivity::class.java))
-                        finish()
-                    })
-
-                    .setCancelable(false)
-                    .create()
-                    .show()
-
+        user.sendEmailVerification()
+            .addOnCompleteListener { it ->
+                if (it.isSuccessful) {
+                    AlertDialog.Builder(this)
+                        .setTitle("Verify e-mail address")
+                        .setMessage("Registered Successfully !\nA verification link has been sent to your Email address")
+                        .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
+                            startActivity(Intent(this, LoginActivity::class.java))
+                            finish()
+                        })
+                        .setCancelable(false)
+                        .create()
+                        .show()
+                }
             }
-        }
-            .addOnFailureListener {t ->
-                showMyDialog("Verification Link", t.message.toString())
+            .addOnFailureListener { t ->
+                showDialog("Verification Link", t.message.toString())
             }
-
-
-    }
-
-
-    private fun showMyDialog(title: String, message : String) {
-       AlertDialog.Builder(this)
-           .setTitle(title)
-           .setMessage(message)
-           .setPositiveButton("OK", DialogInterface.OnClickListener{dialogInterface, _ ->
-               dialogInterface.dismiss()
-
-           })
-           .setCancelable(false)
-           .create()
-           .show()
-        registerProgressDialog.dismiss()
-
     }
 
     private fun getRegDate(): String {
@@ -194,8 +214,33 @@ class RegisterActivity : AppCompatActivity() {
         val monthName = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault())
         val dayNumber = c.get(Calendar.DAY_OF_MONTH)
         val year = c.get(Calendar.YEAR)
-        return "%02d-${monthName.substring(0,3)}-$year".format(dayNumber)
+        return "%02d-${monthName.substring(0, 3)}-$year".format(dayNumber)
     }
 
 
+    private fun showDialog(title: String, message: String) {
+        AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK", DialogInterface.OnClickListener { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            })
+            .setCancelable(false)
+            .create()
+            .show()
+        registerProgressDialog.dismiss()
+    }
+
+    fun openPreviewActivity(view: View) {
+        val intent = Intent(this, PreviewDetailsActivity::class.java)
+        intent.putExtra("name", fullNameTIL.editText!!.text.toString())
+        intent.putExtra("email", emailTIL.editText!!.text.toString())
+        intent.putExtra("mobile", mobileNumberTIL.editText!!.text.toString())
+
+    }
+
+    fun openLoginActivity(view: View) {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+    }
 }
