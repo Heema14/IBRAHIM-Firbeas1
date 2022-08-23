@@ -5,36 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="2pt"
-    android:paddingRight="2pt"
-    tools:context=".MainActivity">
+    android:paddingLeft="7pt"
+    android:paddingRight="7pt"
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30pt"
+        android:fontFamily="@font/mont"
         android:text="login"
         android:textColor="@color/black"
         android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginTop="30pt"/>
+        android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Emaild"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        android:layout_marginTop="60pt">
+        android:layout_marginTop="60pt"
+        app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
             android:hint="Email"
-            android:textColor="#2C2929"
             android:inputType="textEmailAddress"
-            android:drawablePadding="10dp"/>
+            android:textColor="#2C2929" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -49,40 +50,41 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawablePadding=    "10dp"
             android:hint="Password"
-            android:textColor="#2C2929"
             android:inputType="textPassword"
-            android:drawablePadding="10dp"/>
+            android:textColor="#2C2929" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/Btn_Login"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="Login"
-        android:background="@drawable/bu"
         android:layout_gravity="center"
         android:layout_marginTop="40pt"
-        tools:ignore="OnClick" />
+        android:background="@drawable/bu"
+        android:onClick="loginEmployee"
+        android:text="Login" />
 
     <Button
         android:id="@+id/Btn_logGoogle"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="sign in with Google"
-        android:textAllCaps="false"
-        android:background="@drawable/bu"
         android:layout_gravity="center"
-        android:layout_marginTop="20pt"/>
+        android:layout_marginTop="20pt"
+        android:background="@drawable/bu"
+        android:text="sign in with Google"
+        android:textAllCaps="false" />
 
     <TextView
         android:id="@+id/DontAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30pt"
         android:text="Don't Have an Account, Register"
         android:textColor="#252323"
-        android:textSize="16sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30pt"/>
+        android:onClick="openRegisterActivity"
+        android:textSize="16sp" />
 
 </LinearLayout>

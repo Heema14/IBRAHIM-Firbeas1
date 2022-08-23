@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d4d3d3"
-    tools:context=".NextActivity">
+    android:background="@drawable/bu"
+    tools:context=".SplashScreen">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login is successful"
-        android:textColor="@color/black"
+        android:text="Splash Screen"
         android:textSize="28sp"
-        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montsemibold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
