@@ -137,18 +137,18 @@ class LoginActivity : AppCompatActivity() {
             .child(user.uid).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val empGender = snapshot.child("gender").value.toString()
-                    if(empGender == "none") {
+//                    if(empGender == "none") {
 //                        val intent = Intent(this@LoginActivity, GenderSelectionActivity::class.java)
 //                        intent.putExtra("name", empName)
 //                        intent.putExtra("uid", user.uid)
 //                        startActivity(intent)
 //                        finish()
-                    } else {
+//                    } else {
                         startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                         finish()
-                        Toast.makeText(this@LoginActivity, "Welcome to Flash Delivery", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, "Welcome to the App", Toast.LENGTH_SHORT).show()
                     }
-                }
+              //  }
                 override fun onCancelled(error: DatabaseError) {}
             })
     }
