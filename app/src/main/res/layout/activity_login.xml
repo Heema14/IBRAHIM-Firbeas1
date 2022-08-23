@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,6 +71,9 @@
         android:textColor="@color/white" />
 
 
+
+
+
     <Button
         android:id="@+id/login_google"
 
@@ -84,15 +87,48 @@
         android:textColor="@color/white" />
 
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="@string/don_t_have_an_account"
+            android:textColor="@color/purple_200"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/openLoginActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ce"
+            android:text="@string/Register"
+            android:textColor="@color/purple_500"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:gravity="center"
-        android:text="Don't have an Account, Register"
+        android:text=" Register"
 
         android:textColor="@color/black"
         android:textSize="16sp" />
+
+
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/konfettiView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

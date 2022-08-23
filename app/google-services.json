@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1043215944191:android:aa54c74999fea68239bfca",
+        "mobilesdk_app_id": "1:1043215944191:android:61fc59cb1009fc4639bfca",
         "android_client_info": {
-          "package_name": "com.example.myapplication"
+          "package_name": "com.apptow.instore"
         }
       },
       "oauth_client": [
