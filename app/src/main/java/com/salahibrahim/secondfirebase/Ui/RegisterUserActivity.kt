@@ -1,7 +1,8 @@
-package com.salahibrahim.secondfirebase
+package com.salahibrahim.secondfirebase.Ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.salahibrahim.secondfirebase.R
 
 class RegisterUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

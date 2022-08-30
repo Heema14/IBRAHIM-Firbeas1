@@ -1,4 +1,4 @@
-package com.salahibrahim.secondfirebase
+package com.salahibrahim.secondfirebase.Ui
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.salahibrahim.secondfirebase.R
 import java.util.*
 
 class Register_user : AppCompatActivity() {

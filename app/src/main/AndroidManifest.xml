@@ -16,19 +16,22 @@
         android:theme="@style/Theme.SecondFirebase"
         tools:targetApi="31">
         <activity
-            android:name=".RegisterUserActivity"
+            android:name=".NewPostActivity"
             android:exported="false" />
         <activity
-            android:name=".Register_user"
+            android:name=".Ui.RegisterUserActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Ui.Register_user"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".Ui.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".Ui.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreen.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
