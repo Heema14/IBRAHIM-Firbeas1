@@ -1,167 +1,59 @@
-package com.app.flashdelivery.ui.Registration
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF"
+    tools:context=".ui.MainActivity">
 
-import android.content.DialogInterface
-import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
-import android.util.Patterns
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import com.app.flashdelivery.ui.MainActivity
-import com.app.flashdelivery.R
-import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
 
-class LoginActivity : AppCompatActivity() {
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="?attr/actionBarSize">
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var databaseRef: DatabaseReference
+    </FrameLayout>
 
-    private lateinit var emailTIL: TextInputLayout
-    private lateinit var passwordTIL: TextInputLayout
 
-    private var doubleBackToExit = false
-    override fun onBackPressed() {
-        if (doubleBackToExit) {
-            super.onBackPressed()
-            return
-        }
-        doubleBackToExit = true
-        Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show()
-        Handler().postDelayed({ doubleBackToExit = false }, 2000)
-    }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/purple_200"
+        app:contentInsetStart="0dp"
+        app:fabAlignmentMode="center"
+        app:fabAnimationMode="slide"
+        app:fabCradleMargin="8dp"
+        app:fabCradleRoundedCornerRadius="8dp"
 
-        auth = FirebaseAuth.getInstance()
-        databaseRef = FirebaseDatabase.getInstance().reference
+        app:hideOnScroll="false"
+        app:navigationIconTint="@color/purple_200">
 
-        emailTIL = findViewById(R.id.login_email_til)
-        passwordTIL = findViewById(R.id.login_password_til)
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:elevation="0dp"
+            app:itemIconTint="@color/purple_enabled_color"
 
-        findViewById<TextView>(R.id.login_forgot_password_tv).setOnClickListener {userForgotPassword()}
-    }
+            app:itemTextColor="@color/purple_enabled_color"
+            app:menu="@menu/bottom_nav_menu" />
 
-    //Checking if user is logged in already or not
-    override fun onStart() {
-        super.onStart()
-        val user = auth.currentUser
-        if(user != null && user.isEmailVerified) {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
-    }
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
-    private fun validateEmail(): Boolean {
-        val email = emailTIL.editText!!.text.toString().trim()
-        if(email.isEmpty()) {
-            emailTIL.error = getString(R.string.field_empty)
-            return false
-        }
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailTIL.error = getString(R.string.invalid_email)
-            return false
-        }
-        emailTIL.error = null
-        return true
-    }
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_enabled_color"
+        android:contentDescription="@string/content_description_fab"
+        android:src="@drawable/ic_baseline_add_24"
+        app:layout_anchor="@id/bottom_app_bar"
+        app:rippleColor="@color/purple_enabled_color" />
 
-    private fun validatePassword(): Boolean {
 
-        val pass = passwordTIL.editText!!.text.toString().trim()
-
-        if(pass.isEmpty()) {
-            passwordTIL.error = getString(R.string.field_empty)
-            return false
-        }
-
-        if(pass.length < 6) {
-            passwordTIL.error = "Password is too short (Min. 6 Characters)"
-            return false
-        }
-
-        passwordTIL.error = null
-        return true
-    }
-
-    fun loginEmployee(view: View) {
-        if(!validateEmail() or !validatePassword())
-            return
-
-        findViewById<ProgressBar>(R.id.login_progress_bar).visibility = ViewGroup.VISIBLE
-        auth.signInWithEmailAndPassword(emailTIL.editText!!.text.toString(), passwordTIL.editText!!.text.toString())
-            .addOnCompleteListener(this) { task ->
-                if(task.isSuccessful) {
-                    if(auth.currentUser!!.isEmailVerified) {
-                        checkGenderSavedOrNot()
-                    }    else {
-                        findViewById<ProgressBar>(R.id.login_progress_bar).visibility = ViewGroup.INVISIBLE
-                        AlertDialog.Builder(this)
-                            .setTitle("Email Verification")
-                            .setMessage("Please verify your Email address.\nA verification link has been sent to your Email address")
-                            .setPositiveButton("OK", DialogInterface.OnClickListener { dialogInterface, _ ->
-                                dialogInterface.dismiss()
-                            })
-                            .setCancelable(false)
-                            .create()
-                            .show()
-                    }
-                }
-            }
-
-            .addOnFailureListener {
-                AlertDialog.Builder(this)
-                    .setTitle("Attention")
-                    .setMessage("${it.message}")
-                    .setPositiveButton("OK", DialogInterface.OnClickListener { dialogInterface, _ ->
-                        dialogInterface.dismiss()
-                    })
-                    .setCancelable(false)
-                    .create()
-                    .show()
-                findViewById<ProgressBar>(R.id.login_progress_bar).visibility = ViewGroup.INVISIBLE
-            }
-
-    }
-
-    private fun checkGenderSavedOrNot() {
-        val user = auth.currentUser!!
-        val empName = user.displayName!!
-
-        databaseRef.child("users")
-            .child(user.uid).addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val empGender = snapshot.child("gender").value.toString()
-                    if(empGender == "none") {
-                        val intent = Intent(this@LoginActivity, GenderSelectionActivity::class.java)
-                        intent.putExtra("name", empName)
-                        intent.putExtra("uid", user.uid)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                        finish()
-                        Toast.makeText(this@LoginActivity, "Welcome to Flash Delivery", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                override fun onCancelled(error: DatabaseError) {}
-            })
-    }
-
-    fun openRegisterActivity(view: View) {
-        startActivity(Intent(this, RegisterUserActivity::class.java))
-        finish()
-    }
-
-    private fun userForgotPassword() {
-        val forgotDialog = ForgotPassword()
-        forgotDialog.show(supportFragmentManager, "Forgot Password Dialog")
-    }
-}
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
