@@ -42,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
 //        }
 
         openFragment(HomeFragment())
-//        setSupportActionBar(findViewById(R.id.toolbar))
+///        setSupportActionBar(findViewById(R.id.toolbar))
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             startActivity(Intent(this,NewPostActivity::class.java))
