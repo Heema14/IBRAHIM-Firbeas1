@@ -105,7 +105,7 @@ class AddPostActivity : AppCompatActivity() {
 
 
 
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.github.CanHub:Android-Image-Cropper:4.3.1'
     
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     
