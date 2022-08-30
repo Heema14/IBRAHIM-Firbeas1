@@ -1,59 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#FFFFFF"
-    tools:context=".ui.MainActivity">
-
-
-    <FrameLayout
-        android:id="@+id/container"
+    tools:context=".AddPostActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout_add_post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="?attr/actionBarSize">
+        android:background="@android:color/white">
 
-    </FrameLayout>
-
-
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom"
-        android:backgroundTint="@color/purple_200"
-        app:contentInsetStart="0dp"
-        app:fabAlignmentMode="center"
-        app:fabAnimationMode="slide"
-        app:fabCradleMargin="8dp"
-        app:fabCradleRoundedCornerRadius="8dp"
-
-        app:hideOnScroll="false"
-        app:navigationIconTint="@color/purple_200">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_nav_view"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/add_post_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            app:elevation="0dp"
-            app:itemIconTint="@color/purple_enabled_color"
+            android:layout_height="50dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="6dp"
+            android:background="@android:color/white">
 
-            app:itemTextColor="@color/purple_enabled_color"
-            app:menu="@menu/bottom_nav_menu" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    </com.google.android.material.bottomappbar.BottomAppBar>
+                <ImageView
+                    android:id="@+id/close_add_post_btn"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/close" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/save_new_post_btn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/save_edited_info" />
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_enabled_color"
-        android:contentDescription="@string/content_description_fab"
-        android:src="@drawable/ic_baseline_add_24"
-        app:layout_anchor="@id/bottom_app_bar"
-        app:rippleColor="@color/purple_enabled_color" />
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/app_bar_layout_add_post">
+<ImageView
+    android:id="@+id/image_post"
+    android:layout_width="match_parent"
+    android:layout_height="270dp"
+    android:scaleType="centerCrop"
+    android:src="@drawable/add_image_icon"
+    />
+        <EditText
+            android:id="@+id/description_post"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:maxLines="6"
+   android:hint="@string/say_something_about_your_post"
+    />
+    </LinearLayout>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>
