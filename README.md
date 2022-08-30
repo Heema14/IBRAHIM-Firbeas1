@@ -1,71 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AddPostActivity">
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout_add_post"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white">
+class AddPostActivity : AppCompatActivity() {
+    private var myUrl = ""
+    private var imageUri: Uri? = null
+    private var storagePostPicRef: StorageReference? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_add_post)
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/add_post_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="6dp"
-            android:background="@android:color/white">
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }else{
+            window.statusBarColor = Color.WHITE
+        }
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        storagePostPicRef = FirebaseStorage.getInstance().reference.child("Posts Pictures")
 
-                <ImageView
-                    android:id="@+id/close_add_post_btn"
-                    android:layout_width="20dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentStart="true"
-                    android:src="@drawable/close" />
+        save_new_post_btn.setOnClickListener { uploadImage() }
 
-                <ImageView
-                    android:id="@+id/save_new_post_btn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/save_edited_info" />
-            </RelativeLayout>
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/app_bar_layout_add_post">
-<ImageView
-    android:id="@+id/image_post"
-    android:layout_width="match_parent"
-    android:layout_height="270dp"
-    android:scaleType="centerCrop"
-    android:src="@drawable/add_image_icon"
-    />
-        <EditText
-            android:id="@+id/description_post"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:maxLines="6"
-   android:hint="@string/say_something_about_your_post"
-    />
-    </LinearLayout>
+        CropImage.activity().start(this@AddPostActivity)
 
 
-</RelativeLayout>
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+
+            val result = CropImage.getActivityResult(data)
+
+            imageUri = result.uri
+            image_post.setImageURI(imageUri)
+        }
+    }
+
+    private fun uploadImage() {
+        when {
+
+            imageUri == null -> Toast.makeText(this, "Please select image first", Toast.LENGTH_LONG)
+                .show()
+
+            TextUtils.isEmpty(description_post.text.toString()) -> Toast.makeText(
+                this,
+                "Please write the description first",
+                Toast.LENGTH_LONG
+            ).show()
+            else -> {
+                val progressDialog = ProgressDialog(this)
+                progressDialog.setTitle("Adding New Post")
+                progressDialog.setMessage("Please wait , we are adding your picture post....")
+                progressDialog.show()
+                val fileref =
+                    storagePostPicRef!!.child(System.currentTimeMillis().toString() + ".jpg")
+                val uploadeTask: StorageTask<*>
+                uploadeTask = fileref.putFile(imageUri!!)
+                uploadeTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+                    if (!task.isSuccessful) {
+                        task.exception?.let {
+                            throw it
+                            progressDialog.dismiss()
+                        }
+                    }
+
+                    return@Continuation fileref.downloadUrl
+                }).addOnCompleteListener(OnCompleteListener<Uri> { task ->
+                    if (task.isSuccessful) {
+                        val downloadUrl = task.result
+                        myUrl = downloadUrl.toString()
+
+                        val ref = FirebaseDatabase.getInstance().reference.child("Posts")
+                        var postid = ref.push().key
+
+                        val postMap = HashMap<String, Any>()
+                        postMap["postid"] = postid!!
+
+                        postMap["description"] =
+                            description_post.text.toString().toLowerCase()
+                        postMap["publisher"] = FirebaseAuth.getInstance().currentUser!!.uid
+                        postMap["postimage"] = myUrl
+
+                        ref.child(postid).updateChildren(postMap)
+                        Toast.makeText(
+                            this,
+                            "Post uploaded successfully",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        val intent =
+                            Intent(this@AddPostActivity, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                        progressDialog.dismiss()
+
+                    } else {
+                        progressDialog.dismiss()
+                    }
+
+                })
+            }
+        }
+    }
+}
