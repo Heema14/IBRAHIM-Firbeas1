@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
             android:hint="Email"
+            android:background="@drawable/texts"
             android:inputType="textEmailAddress"
             android:textColor="#2C2929" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -50,8 +51,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawablePadding=    "10dp"
+            android:drawablePadding="10dp"
             android:hint="Password"
+            android:background="@drawable/texts"
             android:inputType="textPassword"
             android:textColor="#2C2929" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -85,6 +87,6 @@
         android:text="Don't Have an Account, Register"
         android:textColor="#252323"
         android:onClick="openRegisterActivity"
-        android:textSize="16sp" />
+        android:textSize="16sp"/>
 
 </LinearLayout>

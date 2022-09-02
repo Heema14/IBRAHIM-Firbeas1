@@ -9,14 +9,14 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/icons"
+        android:icon="@drawable/socialicon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/icons"
+        android:roundIcon="@drawable/socialicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.SecondFirebase"
         tools:targetApi="31">
         <activity
-            android:name=".NewPostActivity"
+            android:name=".Ui.NewPostActivity"
             android:exported="false" />
         <activity
             android:name=".Ui.RegisterUserActivity"

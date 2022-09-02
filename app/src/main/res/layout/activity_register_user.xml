@@ -60,6 +60,7 @@
                     android:drawableStart="@drawable/ic_user"
                     android:drawablePadding="10dp"
                     android:hint="full_name"
+                    android:background="@drawable/texts"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -78,6 +79,7 @@
                     android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="10dp"
                     android:hint="e_mail"
+                    android:background="@drawable/texts"
                     android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -97,6 +99,7 @@
                     android:drawablePadding="10dp"
                     android:hint="mobile_number"
                     android:inputType="number"
+                    android:background="@drawable/texts"
                     android:maxLength="14" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -116,6 +119,7 @@
                     android:drawableStart="@drawable/ic_key"
                     android:drawablePadding="10dp"
                     android:hint="create_password"
+                    android:background="@drawable/texts"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -135,6 +139,7 @@
                     android:drawableStart="@drawable/ic_lock"
                     android:drawablePadding="10dp"
                     android:hint="confirm_password"
+                    android:background="@drawable/texts"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -162,8 +167,9 @@
                     android:backgroundTint="@color/white"
                     android:onClick="openPreviewActivity"
                     android:text="preview"
+                    android:background="@drawable/bu"
                     android:textAllCaps="false"
-                    android:textColor="@color/purple_500"
+                    android:textColor="@color/white"
                     tools:ignore="OnClick" />
 
                 <Button
@@ -174,6 +180,7 @@
                     android:layout_weight="1"
                     android:enabled="false"
                     android:text="register"
+                    android:background="@drawable/bu"
                     android:textAllCaps="false"
                     android:textColor="@color/white" />
             </LinearLayout>

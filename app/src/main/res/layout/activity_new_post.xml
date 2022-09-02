@@ -1,9 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="2pt"
+    android:orientation="vertical"
+    android:background="#ffff"
     tools:context=".Ui.NewPostActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/add_post_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="2pt"
+        android:layout_marginRight="3pt">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10pt"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/Post_ok"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="40pt"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_ok_24" />
+
+            <ImageView
+                android:id="@+id/Post_cancel"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_cancel_24" />
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Post_write"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30pt"
+            android:fontFamily="@font/ibrahim"
+            android:gravity="center"
+            android:maxLines="6"
+            android:text="اكتب عن المنشور"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/Post_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30pt"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/postactivity" />
+
+    </LinearLayout>
+</LinearLayout>
