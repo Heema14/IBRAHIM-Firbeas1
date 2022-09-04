@@ -12,7 +12,6 @@ import androidx.appcompat.app.AlertDialog
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.salahibrahim.secondfirebase.Ui.HomeActivity
 import com.salahibrahim.secondfirebase.R
 
 class LoginActivity : AppCompatActivity() {

@@ -177,9 +177,7 @@ class Register_user : AppCompatActivity() {
             }
     }
 
-    private fun addUserDetailsToDatabase(
-        user: FirebaseUser
-    ) {
+    private fun addUserDetailsToDatabase(user: FirebaseUser) {
         registerProgressDialog.setMessage("Uploading details to database")
 
         val mobileNo = mobileNumberTIL.editText!!.text.toString()
