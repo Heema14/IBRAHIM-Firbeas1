@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnCompleteListener
@@ -20,6 +22,11 @@ import com.salahibrahim.secondfirebase.R
 
 class NewPostActivity : AppCompatActivity() {
 
+    private lateinit var Post_Ok :ImageView
+    private lateinit var Post_Cancel :ImageView
+    private lateinit var Post_Image :ImageView
+    private lateinit var Post_Write :EditText
+
     private var myUrl = ""
     private var imageUri: Uri? = null
     private var storagePostPicRef: StorageReference? = null
@@ -28,6 +35,11 @@ class NewPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_post)
 
+        Post_Ok = findViewById(R.id.Post_ok)
+        Post_Cancel = findViewById(R.id.Post_cancel)
+        Post_Image = findViewById(R.id.Post_image)
+        Post_Write = findViewById(R.id.Post_write)
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         } else {
@@ -35,17 +47,16 @@ class NewPostActivity : AppCompatActivity() {
         }
 
         storagePostPicRef = FirebaseStorage.getInstance().reference.child("Posts Pictures")
-        Post_ok.setOnClickListener { uploadImage() }
+        Post_Ok.setOnClickListener { uploadImage() }
         CropImage.activity().start(this@NewPostActivity)
     }
-    //Heema 14
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             val result = CropImage.getActivityResult(data)
             imageUri = result.uri
-            Post_image.setImageURI(imageUri)
+            Post_Image.setImageURI(imageUri)
         }
     }
 
@@ -55,7 +66,7 @@ class NewPostActivity : AppCompatActivity() {
             imageUri == null -> Toast.makeText(this, "Please select image first", Toast.LENGTH_LONG)
                 .show()
 
-            TextUtils.isEmpty(Post_write.text.toString()) -> Toast.makeText(this, "Please write the description first", Toast.LENGTH_LONG).show()
+            TextUtils.isEmpty(Post_Write.text.toString()) -> Toast.makeText(this, "Please write the description first", Toast.LENGTH_LONG).show()
             else -> {
                 val progressDialog = ProgressDialog(this)
                 progressDialog.setTitle("Adding New Post")
@@ -85,7 +96,7 @@ class NewPostActivity : AppCompatActivity() {
                         val postMap = HashMap<String, Any>()
                         postMap["postid"] = postid!!
 
-                        postMap["description"] = Post_write.text.toString().toLowerCase()
+                        postMap["description"] = Post_Write.text.toString().toLowerCase()
                         postMap["publisher"] = FirebaseAuth.getInstance().currentUser!!.uid
                         postMap["postimage"] = myUrl
 

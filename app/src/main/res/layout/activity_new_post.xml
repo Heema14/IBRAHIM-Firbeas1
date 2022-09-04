@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <EditText
             android:id="@+id/Post_write"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,8 +55,9 @@
             android:fontFamily="@font/ibrahim"
             android:gravity="center"
             android:maxLines="6"
-            android:text="اكتب عن المنشور"
+            android:hint="اكتب عن المنشور"
             android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textSize="22sp" />
 
         <ImageView
