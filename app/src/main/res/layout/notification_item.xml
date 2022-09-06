@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2pt">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/notification_profile_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_user" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="2pt"
+        android:layout_toEndOf="@id/notification_profile_image"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/username_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ibrahim"
+            android:textStyle="bold"
+            android:fontFamily="@font/comments"
+            android:textSize="20sp"
+            android:textColor="#4B4D51"/>
+
+        <TextView
+            android:id="@+id/comment_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="jfndnfjkdnjfkd"
+            android:textColor="#4B4D51"
+            android:textSize="17sp"
+            android:fontFamily="@font/mont"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/notification_pst_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

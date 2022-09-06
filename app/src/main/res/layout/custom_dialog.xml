@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:background="@drawable/back_dialog"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_wifi_off_24"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oops..!!"
+        android:textSize="30sp"
+        android:textColor="#131313"
+        android:layout_marginTop="5pt"
+        android:fontFamily="@font/comments"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:fontFamily="@font/mont"
+        android:layout_marginTop="5pt"
+        android:text="No internet connection found chek your internet connection?"/>
+
+    <Button
+        android:id="@+id/btn_Dialog_noIntenet"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8pt"
+        android:background="@drawable/texts"
+        android:fontFamily="@font/comments"
+        android:text="Try again"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
+</LinearLayout>

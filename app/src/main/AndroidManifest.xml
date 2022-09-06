@@ -4,7 +4,8 @@
     package="com.salahibrahim.secondfirebase">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
 
     <application
@@ -17,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SecondFirebase"
         tools:targetApi="31">
+        <activity
+            android:name=".UserSettingActivity"
+            android:exported="false" />
         <activity
             android:name=".Ui.NewPostActivity"
             android:exported="false" />

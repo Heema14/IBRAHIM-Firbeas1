@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2pt"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_chat_search"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_user" />
+
+    <TextView
+        android:id="@+id/username_chat_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="4pt"
+        android:layout_marginLeft="6pt"
+        android:layout_marginTop="4pt"
+        android:layout_marginEnd="20pt"
+        android:layout_marginBottom="3pt"
+        android:layout_toEndOf="@+id/profile_chat_search"
+        android:layout_toRightOf="@+id/profile_chat_search"
+        android:fontFamily="@font/comments"
+        android:text="user name"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_offline"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_alignEnd="@id/profile_chat_search"
+        android:layout_alignBottom="@id/profile_chat_search"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20pt"
+        android:layout_toRightOf="@id/username_chat_search"
+        android:src="@drawable/ic_user"
+        android:visibility="gone"
+        app:civ_border_color="#cfcfcf"
+        app:civ_border_width="6pt" />
+
+    <TextView
+        android:id="@+id/messagelast_chat_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username_chat_search"
+        android:layout_alignStart="@id/username_chat_search"
+        android:layout_alignEnd="@id/username_chat_search"
+        android:layout_toRightOf="@id/profile_chat_search"
+        android:fontFamily="@font/mont"
+        android:maxLines="1"
+        android:padding="2pt"
+        android:text="fgfgfgfgf"
+        android:textColor="#4B4D51"
+        android:textSize="17sp" />
+
+</RelativeLayout>

@@ -13,6 +13,7 @@
         android:id="@+id/add_post_toolbar"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:background="@drawable/texts"
         android:layout_marginLeft="3dp"
         android:layout_marginTop="2pt"
         android:layout_marginRight="3pt">

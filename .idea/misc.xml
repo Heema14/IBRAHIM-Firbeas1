@@ -9,28 +9,36 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/Secondfirebase/app/src/main/res/drawable/screeen.xml" value="0.1345" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/Secondfirebase/app/src/main/res/layout/activity_main.xml" value="0.21" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/Secondfirebase/app/src/main/res/layout/activity_next.xml" value="0.1675213675213675" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/drawable/back_dialog.xml" value="0.1345" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/drawable/bu.xml" value="0.1345" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/drawable/ic_email.xml" value="0.1345" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/drawable/ic_hart_24.xml" value="0.1345" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/drawable/ic_home_24.xml" value="0.1345" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/drawable/ic_user.xml" value="0.1345" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/drawable/ic_wifi_off_24.xml" value="0.1345" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/drawable/nuv_bar.xml" value="0.1345" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/drawable/texts.xml" value="0.1345" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_comment.xml" value="0.25" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_login.xml" value="0.19" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_new_post.xml" value="0.18" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_next.xml" value="0.1675213675213675" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_register_user.xml" value="0.2" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_registerusers.xml" value="0.1675213675213675" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_splash_screen.xml" value="0.18" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_splash_screen.xml" value="0.16" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/activity_user_setting.xml" value="0.1641025641025641" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/add_story_item.xml" value="0.9" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/comment_item.xml" value="0.1641025641025641" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/custom_dialog.xml" value="0.22" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/fragment_hart.xml" value="0.15256410256410258" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/fragment_home.xml" value="0.1641025641025641" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/fragment_search.xml" value="0.1641025641025641" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/fragment_user.xml" value="0.1641025641025641" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/notification_item.xml" value="0.25" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/post_layout_item.xml" value="0.2" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/story_item.xml" value="0.67" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/layout/user_searsh_item.xml" value="0.25" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/secondfirebase/app/src/main/res/menu/bottom_nav_menu.xml" value="0.16324786324786325" />
       </map>
     </option>
