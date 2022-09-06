@@ -49,9 +49,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
 
     // مكتبة قص الصور
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
-    implementation 'com.theartofdev.edmodo:android-image-cropper:4.3.1'
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
