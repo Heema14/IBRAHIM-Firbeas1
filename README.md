@@ -93,7 +93,7 @@ class AddPostActivity : AppCompatActivity() {
         }
     }
     
-    just mostafa
+    just mostafa && kaled
      def glide_version = "4.9.0"
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
