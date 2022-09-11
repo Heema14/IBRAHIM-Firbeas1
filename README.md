@@ -1,6 +1,6 @@
 class AddPostActivity : AppCompatActivity() {
-    private var myUrl = ""
-    private var imageUri: Uri? = null
+    private val GALLERY_REQUEST_CODE = 1234
+    private val TAG: String = "AppDebug"
     private var storagePostPicRef: StorageReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,100 +14,81 @@ class AddPostActivity : AppCompatActivity() {
 
         storagePostPicRef = FirebaseStorage.getInstance().reference.child("Posts Pictures")
 
-        save_new_post_btn.setOnClickListener { uploadImage() }
-
-        CropImage.activity().start(this@AddPostActivity)
-
-
-    }
-
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
-
-            val result = CropImage.getActivityResult(data)
-
-            imageUri = result.uri
-            image_post.setImageURI(imageUri)
+//        save_new_post_btn.setOnClickListener { uploadImage() }
+        crop_image_view.setOnClickListener {
+            pickFromGallery()
         }
     }
 
-    private fun uploadImage() {
-        when {
 
-            imageUri == null -> Toast.makeText(this, "Please select image first", Toast.LENGTH_LONG)
-                .show()
+    private fun setImage(uri: Uri){
+        Glide.with(this)
+            .load(uri)
+            .into(crop_image_view)
+    }
+    private fun launchImageCrop(uri: Uri){
+        CropImage.activity(uri)
+            .setGuidelines(CropImageView.Guidelines.ON)
+            .setAspectRatio(1920, 1080)
+            .setCropShape(CropImageView.CropShape.RECTANGLE) // default is rectangle
+            .start(this)
+    }
 
-            TextUtils.isEmpty(description_post.text.toString()) -> Toast.makeText(
-                this,
-                "Please write the description first",
-                Toast.LENGTH_LONG
-            ).show()
-            else -> {
-                val progressDialog = ProgressDialog(this)
-                progressDialog.setTitle("Adding New Post")
-                progressDialog.setMessage("Please wait , we are adding your picture post....")
-                progressDialog.show()
-                val fileref =
-                    storagePostPicRef!!.child(System.currentTimeMillis().toString() + ".jpg")
-                val uploadeTask: StorageTask<*>
-                uploadeTask = fileref.putFile(imageUri!!)
-                uploadeTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
-                    if (!task.isSuccessful) {
-                        task.exception?.let {
-                            throw it
-                            progressDialog.dismiss()
-                        }
-                    }
 
-                    return@Continuation fileref.downloadUrl
-                }).addOnCompleteListener(OnCompleteListener<Uri> { task ->
-                    if (task.isSuccessful) {
-                        val downloadUrl = task.result
-                        myUrl = downloadUrl.toString()
+    private fun pickFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "image/*"
+        val mimeTypes = arrayOf("image/jpeg", "image/png", "image/jpg")
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        startActivityForResult(intent, GALLERY_REQUEST_CODE)
+    }
 
-                        val ref = FirebaseDatabase.getInstance().reference.child("Posts")
-                        var postid = ref.push().key
+    private fun calculateInSampleSize(
+        options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
+        // Raw height and width of image
+        val height = options.outHeight
+        val width = options.outWidth
+        var inSampleSize = 1
 
-                        val postMap = HashMap<String, Any>()
-                        postMap["postid"] = postid!!
+        if (height > reqHeight || width > reqWidth) {
 
-                        postMap["description"] =
-                            description_post.text.toString().toLowerCase()
-                        postMap["publisher"] = FirebaseAuth.getInstance().currentUser!!.uid
-                        postMap["postimage"] = myUrl
+            val halfHeight = height / 2
+            val halfWidth = width / 2
 
-                        ref.child(postid).updateChildren(postMap)
-                        Toast.makeText(
-                            this,
-                            "Post uploaded successfully",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        val intent =
-                            Intent(this@AddPostActivity, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                        progressDialog.dismiss()
-
-                    } else {
-                        progressDialog.dismiss()
-                    }
-
-                })
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while (halfHeight / inSampleSize > reqHeight && halfWidth / inSampleSize > reqWidth) {
+                inSampleSize *= 2
             }
         }
-    
 
-}
+        return inSampleSize
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        when (requestCode) {
 
+            GALLERY_REQUEST_CODE -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    data?.data?.let { uri ->
+                        launchImageCrop(uri)
+                    }
+                }
+                else{
+                    Log.e(TAG, "Image selection error: Couldn't select that image from memory." )
+                }
+            }
 
-
-
-    implementation 'com.github.CanHub:Android-Image-Cropper:4.3.1'
-    
-    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
-    
-    implementation 'com.squareup.picasso:picasso:2.71828'
-
+            CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
+                val result = CropImage.getActivityResult(data)
+                if (resultCode == Activity.RESULT_OK) {
+                    setImage(result.uri)
+                }
+                else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                    Log.e(TAG, "Crop error: ${result.getError()}" )
+                }
+            }
+        }
+    }
