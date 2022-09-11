@@ -106,4 +106,5 @@ class AddPostActivity : AppCompatActivity() {
             import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 
+        implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 
