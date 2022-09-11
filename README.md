@@ -101,4 +101,6 @@ class AddPostActivity : AppCompatActivity() {
     // Android-Image-Cropper
     def android_image_cropper_version = "2.8.+"
     api "com.theartofdev.edmodo:android-image-cropper:$android_image_cropper_version"
+            maven { url "https://jitpack.io" }
+
 
